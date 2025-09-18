@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.6;
+    color: #333;
+    background: #fff;
+}
+
+header,
+section,
+footer {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0;
+}
+
+header h2 {
+    font-weight: 400;
+    color: #555;
+}
+
+a {
+    text-decoration: none;
+    color: #0366d6;
+}
+
+a.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    border: 1px solid #0366d6;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+a.btn:hover {
+    background: #0366d6;
+    color: white;
+}
+
+ul {
+    text-align: left;
+    display: inline-block;
+}
+
+.qr-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.qr-container figure {
+    margin: 0;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9em;
+    color: #777;
+}
+
+.degradation-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.degradation-table th,
+.degradation-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+.degradation-table th {
+    background: #f4f4f4;
+}
+
+/* Shades from light to dark red */
+.shade1 {
+    background-color: #fde0dc;
+}
+
+.shade2 {
+    background-color: #f9bdbb;
+}
+
+.shade3 {
+    background-color: #f69988;
+}
+
+.shade4 {
+    background-color: #f36c60;
+    color: white;
+}
+
+.shade5 {
+    background-color: #e84e40;
+    color: white;
+}
+
+.shade6 {
+    background-color: #e51c23;
+    color: white;
+}
+
+.shade7 {
+    background-color: #d01716;
+    color: white;
+}
+
+.shade8 {
+    background-color: #c41411;
+    color: white;
+}
+
+.shade9 {
+    background-color: #b0120a;
+    color: white;
+}
+
+.shade10 {
+    background-color: #880e04;
+    color: white;
+}

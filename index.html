@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AccessEval: Benchmarking Disability Bias in LLMs</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>AccessEval</h1>
+        <h2>Benchmarking Disability Bias in Large Language Models</h2>
+        <p><b>Authors:</b>
+            <a href="https://www.linkedin.com/in/srikant-panda-a3084716">Srikant Panda</a> ·
+            <a href="https://www.linkedin.com/in/amitagarwal6">Amit Agarwal</a> ·
+            <a href="https://www.linkedin.com/in/hitesh-patel-63ba9210a">Hitesh Laxmichand Patel</a>
+        </p>
+        <p>
+            <a class="btn" href="https://arxiv.org/abs/2501.12345">📄 Paper</a>
+            <a class="btn" href="https://huggingface.co/datasets/Srikant86/AccessEval">📊 Dataset</a>
+            <a class="btn" href="assets/slides.pdf">🎤 Presentation</a>
+        </p>
+    </header>
+
+    <section>
+        <h3>Abstract</h3>
+        <p>
+            AccessEval provides the first large-scale benchmark to evaluate disability bias in LLMs,
+            spanning six domains and nine disability categories. We benchmarked 21 LLMs and found
+            systematic degradations in tone, stereotyping, and accuracy for disability-aware queries.
+        </p>
+    </section>
+
+    <section>
+        <h3>Highlights</h3>
+        <ul>
+            <li>✅ 2,340+ paired neutral vs. disability-aware queries</li>
+            <li>✅ Benchmarked 21 open + closed LLMs</li>
+            <li>✅ Introduced LLM Judge metric validated against human annotations</li>
+            <li>✅ Open-source dataset available on Hugging Face</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Overview of AccessEval Pipeline</h3>
+        <p>
+            Our proposed pipeline benchmarks disability bias by generating paired neutral and disability-aware queries
+            across six domains and nine disability categories.
+            Responses are evaluated on sentiment (VADER), social perception (Regard), and quality (LLM Judge).
+        </p>
+        <img src="assets/pipeline.png" alt="AccessEval Pipeline" style="max-width:100%; border:1px solid #ccc;">
+    </section>
+
+    <section>
+        <h3>Table 1: Percentage of Disability-Aware Queries Receiving Lower Scores</h3>
+        <p>
+            Darker shading indicates larger performance degradation across models.
+        </p>
+
+        <table class="degradation-table">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>&Delta;<sub>Regard</sub></th>
+                    <th>&Delta;<sub>VADER</sub></th>
+                    <th>&Delta;<sub>LLM Judge</sub></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Claude-3-7-sonnet</td>
+                    <td class="shade6">56.36</td>
+                    <td class="shade9">59.33</td>
+                    <td class="shade3">29.15</td>
+                </tr>
+                <tr>
+                    <td>Cohere R Plus</td>
+                    <td class="shade8">58.19</td>
+                    <td class="shade6">55.24</td>
+                    <td class="shade6">40.02</td>
+                </tr>
+                <tr>
+                    <td>Cohere Command-A</td>
+                    <td class="shade6">56.14</td>
+                    <td class="shade8">57.31</td>
+                    <td class="shade9">54.01</td>
+                </tr>
+                <tr>
+                    <td>OpenAI GPT-4o</td>
+                    <td class="shade7">57.31</td>
+                    <td class="shade3">51.37</td>
+                    <td class="shade8">48.78</td>
+                </tr>
+                <tr>
+                    <td>Internlm2.5-7b</td>
+                    <td class="shade8">58.45</td>
+                    <td class="shade6">55.46</td>
+                    <td class="shade4">34.47</td>
+                </tr>
+                <tr>
+                    <td>Internlm2.5-1-8b</td>
+                    <td class="shade2">49.43</td>
+                    <td class="shade5">53.89</td>
+                    <td class="shade7">44.06</td>
+                </tr>
+                <tr>
+                    <td>Internlm2.5-20b</td>
+                    <td class="shade6">56.41</td>
+                    <td class="shade3">51.28</td>
+                    <td class="shade2">25.26</td>
+                </tr>
+                <tr>
+                    <td>Llama-3.1-8B</td>
+                    <td class="shade4">52.56</td>
+                    <td class="shade9">58.64</td>
+                    <td class="shade7">45.39</td>
+                </tr>
+                <tr>
+                    <td>Llama-3.1-70B</td>
+                    <td class="shade6">56.74</td>
+                    <td class="shade7">56.41</td>
+                    <td class="shade8">48.29</td>
+                </tr>
+                <tr>
+                    <td>Llama-3.2-3B</td>
+                    <td class="shade4">51.89</td>
+                    <td class="shade10">61.68</td>
+                    <td class="shade8">48.90</td>
+                </tr>
+                <tr>
+                    <td>Meta-Llama-3-8B</td>
+                    <td class="shade6">56.93</td>
+                    <td class="shade8">56.98</td>
+                    <td class="shade8">50.61</td>
+                </tr>
+                <tr>
+                    <td>Ministral-8B</td>
+                    <td class="shade5">54.36</td>
+                    <td class="shade4">52.99</td>
+                    <td class="shade4">33.57</td>
+                </tr>
+                <tr>
+                    <td>Mistral-Small-24B</td>
+                    <td class="shade6">55.55</td>
+                    <td class="shade2">50.18</td>
+                    <td class="shade3">31.86</td>
+                </tr>
+                <tr>
+                    <td>Phi-3.5-mini</td>
+                    <td class="shade5">55.03</td>
+                    <td class="shade6">55.55</td>
+                    <td class="shade1">22.83</td>
+                </tr>
+                <tr>
+                    <td>Phi-4</td>
+                    <td class="shade10">61.34</td>
+                    <td class="shade1">50.04</td>
+                    <td class="shade6">41.45</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-0.5B</td>
+                    <td class="shade4">52.08</td>
+                    <td class="shade8">58.02</td>
+                    <td class="shade10">56.83</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-1.5B</td>
+                    <td class="shade4">53.08</td>
+                    <td class="shade5">54.89</td>
+                    <td class="shade7">44.68</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-3B</td>
+                    <td class="shade7">57.88</td>
+                    <td class="shade9">58.68</td>
+                    <td class="shade3">31.19</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-7B</td>
+                    <td class="shade1">46.60</td>
+                    <td class="shade3">51.09</td>
+                    <td class="shade4">34.04</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-14B</td>
+                    <td class="shade9">59.30</td>
+                    <td class="shade5">53.84</td>
+                    <td class="shade5">36.27</td>
+                </tr>
+                <tr>
+                    <td>Qwen2.5-32B</td>
+                    <td class="shade9">58.92</td>
+                    <td class="shade2">50.71</td>
+                    <td class="shade4">34.71</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3>QR Codes</h3>
+        <p>Scan to view links:</p>
+        <div class="qr-container">
+            <figure>
+                <img src="assets/srikant_linkedin.png" alt="Srikant LinkedIn" width="120">
+                <figcaption>Srikant</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/amit_linkedin.png" alt="Amit LinkedIn" width="120">
+                <figcaption>Amit</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/hitesh_linkedin.png" alt="Hitesh LinkedIn" width="120">
+                <figcaption>Hitesh</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/qr_arxiv.png" alt="Arxiv" width="120">
+                <figcaption>arXiv</figcaption>
+            </figure>
+            <figure>
+                <img src="assets/qr_dataset.png" alt="Dataset" width="120">
+                <figcaption>Dataset</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 AccessEval Project · Hosted on GitHub Pages</p>
+    </footer>
+</body>
+
+</html>
